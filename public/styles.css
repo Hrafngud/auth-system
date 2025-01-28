@@ -1,0 +1,517 @@
+/* ========================================
+   🌟 NEON PULSE - Cyberpunk Theme v1.0
+   A modern, futuristic CSS framework
+   ======================================== */
+
+/* Import futuristic fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* 🎨 Design Tokens */
+:root {
+  /* Color System */
+  --color-neon-primary: #00fff9;
+  --color-neon-secondary: #ff00ff;
+  --color-neon-accent: #7700ff;
+  --color-background-dark: #0a0b0e;
+  --color-surface-dark: #161823;
+  --color-surface-darker: #0d0e16;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b3b3b3;
+  --color-success: #00ff9f;
+  --color-error: #ff0055;
+  --color-warning: #ffbb00;
+
+  /* Typography */
+  --font-primary: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Effects */
+  --neon-glow-primary: 0 0 10px rgba(0, 255, 249, 0.5),
+                       0 0 20px rgba(0, 255, 249, 0.3),
+                       0 0 30px rgba(0, 255, 249, 0.1);
+  --neon-glow-secondary: 0 0 10px rgba(255, 0, 255, 0.5),
+                         0 0 20px rgba(255, 0, 255, 0.3),
+                         0 0 30px rgba(255, 0, 255, 0.1);
+  
+  /* Layout */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  
+  /* Animation */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* 🌍 Global Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-background-dark);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* 🎯 Typography System */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+}
+
+h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+h2 { font-size: 2rem; margin-bottom: 1.25rem; }
+h3 { font-size: 1.75rem; margin-bottom: 1rem; }
+
+/* 🖼️ Layout Components */
+.mainBg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    var(--color-background-dark),
+    var(--color-surface-darker)
+  );
+}
+
+
+.container {
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 3em;
+}
+
+/* 🎴 Cards & Containers */
+.card {
+  background: var(--color-surface-dark);
+  border: 1px solid rgba(var(--color-neon-primary), 0.2);
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform var(--transition-normal),
+              box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--neon-glow-primary);
+}
+
+/* 🔲 Buttons */
+button,
+.btn {
+  font-family: var(--font-mono);
+  padding: 0.75rem 1.5rem;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-sm);
+  background: var(--color-surface-dark);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover,
+.btn:hover {
+  background: var(--color-neon-primary);
+  color: var(--color-background-dark);
+  box-shadow: var(--neon-glow-primary);
+}
+
+button:disabled,
+.btn:disabled {
+  background: var(--color-surface-darker);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Button Variants */
+.btn-primary,
+button.primary {
+  background: var(--color-neon-primary);
+  color: var(--color-background-dark);
+}
+
+.btn-secondary,
+button.secondary {
+  background: var(--color-neon-secondary);
+  color: var(--color-background-dark);
+}
+
+.btn-accent,
+button.accent {
+  background: var(--color-neon-accent);
+  color: var(--color-text-primary);
+}
+
+/* Outline Buttons */
+.btn-outline,
+button.outline {
+  background: transparent;
+  border: 2px solid var(--color-neon-primary);
+  color: var(--color-neon-primary);
+}
+
+.btn-outline:hover,
+button.outline:hover {
+  background: var(--color-neon-primary);
+  color: var(--color-background-dark);
+}
+
+/* Button Sizes */
+.btn-sm,
+button.small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg,
+button.large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* Icon Buttons */
+.btn-icon,
+button.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Fixed Action Buttons */
+.btn-fixed,
+button.fixed {
+  position: fixed;
+  z-index: 1000;
+}
+
+.btn-fixed.bottom-right,
+button.fixed.bottom-right {
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.btn-fixed.bottom-left,
+button.fixed.bottom-left {
+  bottom: 2rem;
+  left: 2rem;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.big-button {
+  width: 40%;
+  padding: 2rem 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.baixa-button {
+  background: var(--color-error);
+  color: var(--color-text-primary);
+}
+
+.baixa-button:hover {
+  background: var(--color-error);
+  box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+}
+
+.reposicao-button {
+  background: var(--color-success);
+  color: var(--color-background-dark);
+}
+
+.reposicao-button:hover {
+  background: var(--color-success);
+  box-shadow: 0 0 20px rgba(0, 255, 159, 0.5);
+}
+
+/* Admin Navigation Buttons */
+#admin-nav .nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  padding: 0.75rem 1.5rem;
+  position: relative;
+}
+
+.line {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: var(--color-neon-primary);
+}
+
+#admin-nav .nav-btn:hover {
+  color: var(--color-neon-primary);
+  background: transparent;
+  box-shadow: none;
+}
+
+#admin-nav .nav-btn.active {
+  color: var(--color-neon-primary);
+}
+
+#admin-nav .nav-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  background: var(--color-neon-primary);
+  box-shadow: var(--neon-glow-primary);
+}
+
+/* Material Button */
+.material-button {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  background: var(--color-neon-accent);
+  color: var(--color-text-primary);
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--neon-glow-primary);
+  z-index: 1000;
+}
+
+.material-button:hover {
+  background: var(--color-neon-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--neon-glow-secondary);
+}
+
+.loginContainer {
+  width: 50%;
+}
+
+#loginForm {
+  margin-top: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* 📝 Forms */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface-darker);
+  border: 1px solid rgba(var(--color-neon-primary), 0.3);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  transition: all var(--transition-normal);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-neon-primary);
+  box-shadow: var(--neon-glow-primary);
+}
+
+/* 📊 Tables */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(var(--color-neon-primary), 0.2);
+}
+
+th {
+  background: var(--color-surface-darker);
+  color: var(--color-neon-primary);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+tr:hover {
+  background: rgba(var(--color-neon-primary), 0.05);
+}
+
+/* 🎭 Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.modal.active {
+  display: block;
+}
+
+.modal-content {
+  background: var(--color-surface-dark);
+  border: 1px solid var(--color-neon-primary);
+  box-shadow: var(--neon-glow-primary);
+  border-radius: var(--border-radius-lg);
+  margin: 10% auto;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  transform: translateY(-20px);
+  opacity: 0;
+  animation: modalSlideIn 0.3s ease forwards;
+}
+
+@keyframes modalSlideIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 🎨 Utility Classes */
+.neon-text {
+  color: var(--color-neon-primary);
+  text-shadow: var(--neon-glow-primary);
+}
+
+.neon-border {
+  border: 1px solid var(--color-neon-primary);
+  box-shadow: var(--neon-glow-primary);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ⚡ Special Effects */
+.cyberpunk-border {
+  position: relative;
+  border: 1px solid var(--color-neon-primary);
+}
+
+.cyberpunk-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    var(--color-neon-primary),
+    var(--color-neon-secondary),
+    var(--color-neon-accent)
+  );
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0.5;
+  transition: opacity var(--transition-normal);
+}
+
+.cyberpunk-border:hover::before {
+  opacity: 1;
+}
+
+/* 🌟 Animations */
+@keyframes neonPulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.neon-pulse {
+  animation: neonPulse 2s infinite;
+}
+
+/* 🎮 Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-neon-primary);
+  border-radius: var(--border-radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-secondary);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+
+  .card {
+    padding: 1rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .big-button {
+    width: 100%;
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: 5% auto;
+  }
+}
+
+/* Layout Classes from Original CSS */
